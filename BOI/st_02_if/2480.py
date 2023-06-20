@@ -1,6 +1,6 @@
 x,y,z = map(int, input().split())
 
-if x == y == z:
+if x == y and y == z:
     print(10000+x*1000)
 elif x == y or x == z :
     print(1000+x*100)
