@@ -3,5 +3,6 @@ if y > 44:
     print(x, y-45)
 elif y<45 and x>0:
     print(x-1,y+15)
+# x == 0 이면
 else:
     print(23,y+15)
