@@ -9,7 +9,7 @@ tc = int(input())
 for _ in range(tc):
     n = int(input())
     now = list(map(int, sys.input().split()))
-    dest = list(map(int, sys.input().split()))   
+    next = list(map(int, sys.input().split()))   
 
     matrix = [[0]*n for _ in range(n)]
     visited = [[False]*n for _ in range(n)]
@@ -28,7 +28,7 @@ for _ in range(tc):
         while q:
             x, y = q.popleft()
 
-            if x == dest[0] and y == dest[1] :
+            if x == next[0] and y == next[1] :
                 return 0
 
             for i in range(8):
@@ -38,7 +38,7 @@ for _ in range(tc):
                 if nx <0 or nx>=n or ny<0 or ny>=n:
                     continue
 
-                if nx == dest[0] and ny == dest[1]:
+                if nx == next[0] and ny == next[1]:
                     visited[nx][ny] = True
                     return matrix[x][y]+1
 
