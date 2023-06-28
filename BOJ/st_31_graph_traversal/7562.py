@@ -4,17 +4,17 @@ input = sys.stdin.readline
 from collections import deque
 
 
-t = int(input()) 
+tc = int(input()) 
 
-for _ in range(t):
+for _ in range(tc):
     n = int(input())
-    now = list(map(int, sys.stdin.readline().split()))
-    dest = list(map(int, sys.stdin.readline().split()))   
+    now = list(map(int, sys.input().split()))
+    dest = list(map(int, sys.input().split()))   
 
     matrix = [[0]*n for _ in range(n)]
     visited = [[False]*n for _ in range(n)]
 
-    queue = deque()
+    q = deque()
     
     # 시계방향
     dx = [-2, -1, 1, 2, 2, 1, -1, -2]
@@ -22,11 +22,11 @@ for _ in range(t):
 
 
     def bfs():
-        queue.append(now)
+        q.append(now)
         visited[now[0]][now[1]]
 
-        while queue:
-            x, y = queue.popleft()
+        while q:
+            x, y = q.popleft()
 
             if x == dest[0] and y == dest[1] :
                 return 0
@@ -43,7 +43,7 @@ for _ in range(t):
                     return matrix[x][y]+1
 
                 if visited[nx][ny] == False:
-                    queue.append([nx,ny])
+                    q.append([nx,ny])
                     visited[nx][ny] = True
                     matrix[nx][ny] = matrix[x][y] + 1    
     
