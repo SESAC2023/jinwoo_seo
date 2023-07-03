@@ -1,43 +1,26 @@
-"""
-BFS: 최단 거리를 탐색할 때 사용할 수 있음.
-  조건: "단, 모든 간선의 비용이 동일할 때만"
-"""
-
+import sys
+sys.setrecursionlimit(int(1e6))
+input = sys.stdin.readline
 from collections import deque
+MAX = 50 + 10
 
-# 출발 위치(n), 도착 지점(x)를 입력받기
-n, x = map(int, input().split())
+n, k = map(int, input().split())
 
-visited = set()  # 방문 여부
-distance = dict()
-
-q = deque()
-q.append(n)  # n을 큐에 삽입
-visited.add(n)  # n을 방문 처리
-distance[n] = 0  # 자기 자신까지는 0초가 걸림
-
-# BFS 수행
-while q:  # 큐가 빌 때까지 반복
-    current = q.popleft()  # 큐에서 원소 추출
-    # print(current)
-    # -1, +1 혹은 *2가 있음
-    next = current - 1
-    if next not in visited:  # 방문한 적 없다면 최단 거리 기록
-        if next >= 0 and next <= 100000:
-            visited.add(next)
-            q.append(next)
-            distance[next] = distance[current] + 1
-    next = current + 1
-    if next not in visited:  # 방문한 적 없다면 최단 거리 기록
-        if next >= 0 and next <= 100000:
-            visited.add(next)
-            q.append(next)
-            distance[next] = distance[current] + 1
-    next = current * 2
-    if next not in visited:  # 방문한 적 없다면 최단 거리 기록
-        if next >= 0 and next <= 100000:
-            visited.add(next)
-            q.append(next)
-            distance[next] = distance[current] + 1
-
-print(distance[x])
+def bfs(a,b):
+    q = []
+    visited = [False] * 200001
+    
+    q.append(a)
+    visited[a] = 1
+    
+    while q:
+        x = q.popleft()
+        if x == b:
+            return visited[b]-1
+        for i in (x-1, x+1, x*2):
+            if 0 <= i <= 200000 and visited[i] == 0:
+                q.append(i)
+                visited[i] = visited[x] + 1
+                
+    return -1
+print(bfs(n,k))
