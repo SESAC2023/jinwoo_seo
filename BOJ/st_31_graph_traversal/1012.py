@@ -1,43 +1,37 @@
-# 재귀 limit 설정
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(int(1e6))
+input = sys.stdin.readline
+from collections import deque
+MAX = 50 + 10
 
-### 2
-# dfs 정의
-def dfs(x, y):
-    # 상하좌우 확인을 위해 dx, dy 생성
-    dx = [0,0,-1,1]
-    dy = [1,-1,0,0]
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
 
-    # 네 방향 탐색
+def dfs(y, x):
+    global visited
+    visited[y][x] = True
     for i in range(4):
-        nx = x + dx[i]
         ny = y + dy[i]
-        if (0 <= nx < M) and (0 <= ny < N):  # nx:ny ↔ M:N 범위 참고
-            if graph[ny][nx] == 1:
-                graph[ny][nx] = -1  # 배추가 인접할 때 체커
-                dfs(nx, ny)
+        nx = x + dx[i]
+        if graph[ny][nx] and not visited[ny][nx]:
+            dfs(ny, nx)
+    
 
-### 1                    
-T = int(input())
-
-for i in range(T):
-    M, N, K = map(int, input().split())  # M:가로, N:세로, K:개수
-    graph = [[0]*M for i in range(N)]
-    cnt = 0
-
-    # 배추 위치에 1 표시
-    for j in range(K):
-        X, Y = map(int, input().split())
-        graph[Y][X] = 1
-
-### 3        
-    # dfs 활용해서 배추 그룹 수 세기
-    for x in range(M):
-        for y in range(N):
-            if graph[y][x] == 1:
-                dfs(x, y)
-                cnt += 1
-
-    # 정답을 위한 출력
-    print(cnt)
+t = int(input())
+for _ in range(t):
+    m,n,k = map(int, input().split())
+    graph = [[False] * MAX for _ in range(MAX)]
+    visited = [[False] * MAX for _ in range(MAX)]
+    
+    for _ in range(k):
+        x, y = map(int, input().split())
+        graph[y + 1][x + 1] = True
+        
+    answer = 0
+    for i in range(1, n+1):
+        for j in range(1, m+1):
+            if graph[i][j] and not visited[i][j]:
+                dfs(i, j)
+                answer += 1
+    
+    print(answer)
