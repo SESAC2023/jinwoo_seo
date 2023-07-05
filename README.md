@@ -7,3 +7,5 @@
 
   딥러닝 관련 프로젝트로는 강아지 병변 예측 서비스를 진행하였습니다. 이 부분도 노션에서 확인 가능합니다.
 
+[![Solved.ac
+프로필](http://mazassumnida.wtf/api/generate_badge?boj={seoyc0824)](https://solved.ac/{seoyc0824})
