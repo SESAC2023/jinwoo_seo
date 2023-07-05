@@ -9,3 +9,6 @@
 
 [![Solved.ac
 프로필](http://mazassumnida.wtf/api/mini/generate_badge?boj=seoyc0824)](https://solved.ac/seoyc0824)
+
+[![Solved.ac
+프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=seoyc0824)](https://solved.ac/seoyc0824)
