@@ -9,7 +9,7 @@ def convert_png_to_jpg(folder_path):
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             # 파일의 확장자를 확인하여 이미지 파일인지 확인합니다.
-            if file.lower().endswith(".png"):
+            if file.lower().endswith(".png"): # .jpeg 등 다 가능
                 # 이미지 파일인 경우, 파일의 절대 경로를 구합니다.
                 image_path = os.path.join(root, file)
 
