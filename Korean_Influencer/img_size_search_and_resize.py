@@ -5,7 +5,7 @@ import os
 image_folder = "파일경로" 
 
 # 이미지 사이즈를 지정합니다.
-target_size = 1450
+target_size = 1250
 
 def resize_images(folder_path, target_size):
     # 폴더 내의 모든 파일과 서브폴더를 순회합니다.
